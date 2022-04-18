@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from "react";
 import { ProductItem } from "./ProductItem";
 
 interface SearchResultsProps {
@@ -9,8 +10,21 @@ interface SearchResultsProps {
 }
 
 export function SearchResults({ results }: SearchResultsProps) {
+  /**
+   * useMemo
+   * Usado para Memorizar resultados de calculos pesados
+   * Ou para repassar como props para filhos
+   * O Calculo só é feito novamente quando a dependência *results* sofrer alteração
+   */
+  const totalResults = useMemo(() => {
+    return results.reduce((total, product) => {
+      return total + product.price;
+    }, 20);
+  }, [results]);
+
   return (
     <div>
+      <h2>Total: {totalResults}</h2>
       {results.map((product) => {
         return (
           <div key={product.id}>

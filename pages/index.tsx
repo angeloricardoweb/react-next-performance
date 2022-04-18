@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 import { SearchResults } from "../components/SearchResults";
 
 const Home: NextPage = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("product 10");
   const [results, setResults] = useState([]);
 
   async function handleSearch(event: FormEvent) {
@@ -23,12 +23,13 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <h1>Search</h1>
+      <h1>Busque um produto entre Product 1 a Product 1000</h1>
       <form onSubmit={handleSearch}>
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          placeholder="product ..."
         />
         <button type="submit">Buscar</button>
       </form>

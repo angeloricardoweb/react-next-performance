@@ -42,4 +42,10 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o 
 
 ### memo (ProductItem.tsx)
 
-- memoization: usado para evitar a renderização do componente se não houver mudanças.
+- Usado para evitar a renderização do componente se não houver mudanças.
+
+### useMemo (SearchResults.tsx)
+
+- Usado para memorizar cálculos pesados ou que são repassados para componentes filhos.
+- Ao salvar esse cálculo, ele é memorizado e não é recalculado. Evitando assim que seja alocado um novo espaço na memória.
+- Esse processo é chamado de memoization.
