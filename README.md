@@ -49,3 +49,7 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o 
 - Usado para memorizar cálculos pesados ou que são repassados para componentes filhos.
 - Ao salvar esse cálculo, ele é memorizado e não é recalculado. Evitando assim que seja alocado um novo espaço na memória.
 - Esse processo é chamado de memoization.
+
+### useCallback (index.tsx)
+
+- Usado para memorizar funções que são repassadas para componentes filhos.

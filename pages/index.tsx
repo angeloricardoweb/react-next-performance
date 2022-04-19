@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { FormEvent, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
 import { SearchResults } from "../components/SearchResults";
 
 const Home: NextPage = () => {
@@ -21,6 +21,25 @@ const Home: NextPage = () => {
     setResults(data);
   }
 
+  /**
+   * Sempre que uma função for repassadas para os filhos
+   * ela pode usar o useCallback
+   * para que quando uma comparação referencial for realizada
+   * não seja necessário recriar o componente,
+   * visto que a função não mudou
+   *
+   */
+
+  // Sem useCallback
+  // async function addToWishList(id: number) {
+  //   console.log(id);
+  // }
+
+  // Com useCallback
+  const addToWishList = useCallback(async (id: number) => {
+    console.log(id);
+  }, []);
+
   return (
     <div>
       <h1>Busque um produto entre Product 1 a Product 1000</h1>
@@ -34,7 +53,7 @@ const Home: NextPage = () => {
         <button type="submit">Buscar</button>
       </form>
 
-      <SearchResults results={results} />
+      <SearchResults results={results} onAddToWishList={addToWishList} />
     </div>
   );
 };
